@@ -1,0 +1,134 @@
+---
+title: "Introdução à estatística e desenhos de pesquisa"
+author: "Ricardo Primi, USF"
+format: 
+  revealjs:
+   theme: default
+editor: visual
+bibliography: references.bib
+---
+
+## Por que estatística e análise de dados
+
+-   Raciocínio Lógico
+-   Interação entre variáveis
+
+## Raciocínio Lógico
+
+-   Conhecimento a partir de crenças e viéses (maldição das crenças) Conhecimento a partir de argumentos lógicos\
+-   A estatística e a análise de dados nos ajudam a controlar as crenças e raciocinar criticamente a partir de evidências
+-   A estatística empodera o rqciocínio crítico
+
+## Argumentos
+
+**Argumento válido com conclusão consonante com crenças comuns**
+
+-   Todos os cigarros são caros (Premissa 1)
+-   Algumas drogas são baratas (Premissa 2)
+-   Portanto, algumas drogas não são cigarros (Conclusão)
+
+**Argumento válido com conclusão dissonante com crenças comuns**
+
+-   Todas drogas são caras (Premissa 1)
+-   Algumas cigarros são baratos (Premissa 2)
+-   Portanto, alguns cigarros não são drogas (Conclusão)
+
+## Argumentos
+
+**Argumento inválido com conclusão consonante com crenças comuns**
+
+-   Todas drogas são caras (Premissa 1)
+-   Algumas cigarros são baratos (Premissa 2)
+-   Portanto, algumas drogas não são cigarros (Conclusão)
+
+**Argumento inválido com conclusão dissonante com crenças comuns**
+
+-   Todas cigarros são caros (Premissa 1)
+-   Algumas drogas são baratos (Premissa 2)
+-   Portanto, alguns cigarros não são drogas (Conclusão)
+
+## Psicologia do raciocínio lógico
+
+![](images/paste-AA1A3AAC.png)
+
+## Representação das premissas
+
+![](images/paste-23C26E01.png)
+
+## Influência das crenças
+
+[@evans1983] citado em https://learnstatswithjasp.com
+
+![](images/paste-A0ACBDB0.png){fig-align="center"}
+
+![](images/paste-04A211F1.png){fig-align="center"}
+
+![](images/paste-C2991DD8.png){fig-align="center"}
+
+## Interação entre variáveis observadas e ocultas
+
+**Exemplo clássico do pardoxo de Simpson**
+
+-   Seleção de pós graduandos na Universidade da Califórnia em Berkeley
+
+![](images/paste-DC081657.png){fig-align="center"}
+
+![](images/paste-DC37BDFF.png){fig-align="center"}
+
+## Visualização: vendo mais de duas dimensões
+
+![](images/paste-9B7E58A4.png){fig-align="center"}
+
+*"The gender bias in total admissions was caused by the fact that women tended to self-select for harder departments."*
+
+Veja isso: <https://setosa.io/simpsons/>
+
+## Sua vez: quais variáveis estão envolvidas nesse exemplo ?
+
+## Mais exemplos do paradoxo de Simpson
+
+[@pearl2016]
+
+![](images/paste-882123D4.png){fig-align="center" width="300"}
+
+## 
+
+![](images/paste-9AC67A2F.png){fig-align="center" width="300"}
+
+## Estatística na Psicologia
+
+-   Ciência do comportamento, determinismo e conhecimento probabilístico
+-   Estatística e desenho de pesquisa
+-   Leitura crítica dos estudos reportados em artigos
+-   Dados no No século 21 (pense nos dados de Freud e nos dados hoje)
+
+## Desenho de pesquisas: mensuração
+
+-   Construto, medidas, operacionalização e variáveis
+-   Escalas de medida: nominal, ordinal, intervalar, razão
+-   Variáveis contínuas e discretas
+-   Precisão e validade
+
+## Desenho de pesquisas: tipos de pesquisa
+
+-   Status/Papel das variáveis: preditoras/desfechos ou resultados
+-   Estudo experimental (manipulação e randoimização)
+-   Estrudo observacional
+
+![](images/paste-7461C134.png){fig-align="center"}
+
+## Desenho de pesquisas: ameaças à validade
+
+-   Variáveis confundidoras (variáveis nao observadas/medidas) relacionadas as VI's e VD's
+-   Artefatos do estudo (validade externa)
+-   Validade do estudo: validade interna, externa, construto, de face e ecológica
+
+## Sua vez: pense em exemplos de dois efeitos listados nas pags 31 a 40
+
+## Introduão ao Jasp
+
+Base de dados Titanic!
+
+link: https://www.kaggle.com/competitions/titanic/overview
+
+## Referências
