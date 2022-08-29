@@ -14,8 +14,8 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
 ## Programa
 
 1.  [Introdução à estatística e métodos quantitativos](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html). Instalando JASP
-2.  [Desenho de pesquisas em psicologia](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html) 
-3.  [Examinando variáveis com com estatísticas descritivas e gráficos. Rodando análises descritivas no JASP]((http://www.labape.com.br/rprimi/ds/slides/a2_descri_stats.ppt)
+2.  [Desenho de pesquisas em psicologia](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html)
+3.  [Examinando variáveis com com estatísticas descritivas e gráficos. Rodando análises descritivas no JASP](http://www.labape.com.br/rprimi/ds/slides/a2_descri_stats.ppt)
 4.  Introdução a probabilidade e distribuições estatísticas
 5.  Estimação de parâmetros estatísticos a partir de amostras
 6.  Teste de hipóteses
