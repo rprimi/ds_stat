@@ -17,7 +17,7 @@ bibliography: references.bib
 
 -   Conhecimento a partir de crenças e viéses (maldição das crenças) Conhecimento a partir de argumentos lógicos\
 -   A estatística e a análise de dados nos ajudam a controlar as crenças e raciocinar criticamente a partir de evidências
--   A estatística empodera o rqciocínio crítico
+-   A estatística empodera o raciocínio crítico
 
 ## Argumentos
 
@@ -44,7 +44,7 @@ bibliography: references.bib
 **Argumento inválido com conclusão dissonante com crenças comuns**
 
 -   Todas cigarros são caros (Premissa 1)
--   Algumas drogas são baratos (Premissa 2)
+-   Algumas drogas são baratas (Premissa 2)
 -   Portanto, alguns cigarros não são drogas (Conclusão)
 
 ## Psicologia do raciocínio lógico
@@ -117,11 +117,19 @@ Veja isso: <https://setosa.io/simpsons/>
 
 ![](images/paste-7461C134.png){fig-align="center"}
 
+## Resumo do desenho de pesquisas
+
+![](images/paste-6F75D4D8.png)
+
 ## Desenho de pesquisas: ameaças à validade
 
 -   Variáveis confundidoras (variáveis nao observadas/medidas) relacionadas as VI's e VD's
 -   Artefatos do estudo (validade externa)
 -   Validade do estudo: validade interna, externa, construto, de face e ecológica
+
+## População, amostra e inferência
+
+![](images/paste-8648723A.png)
 
 ## Sua vez: pense em exemplos de dois efeitos listados nas pags 31 a 40
 
