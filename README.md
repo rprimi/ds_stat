@@ -16,17 +16,18 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
 1.  [Introdução à estatística e métodos quantitativos](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html). Instalando JASP
 2.  [Desenho de pesquisas em psicologia](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html)
 3.  [Examinando variáveis com com estatísticas descritivas e gráficos. Rodando análises descritivas no JASP](http://www.labape.com.br/rprimi/ds/slides/a2_descri_stats.ppt)
-4.  Introdução a probabilidade e distribuições estatísticas
-5.  Estimação de parâmetros estatísticos a partir de amostras
-6.  Teste de hipóteses
-7.  Comparando médias (t-test)
-8.  Comparando médias de vários grupos (ANOVA)
-9.  Correlação e regressão simples
-10. Comparando médias de vários grupos com ANOVA fatorial: parte 1
-11. Comparando médias de vários grupos com ANOVA fatorial: parte 2
-12. Regressão múltipla
-13. Análise psicométrica e análise fatorial
-14. Análise de cluster
+4.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras\
+       - [Materiais do prof Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/bayes/lecture1.pdf)
+
+5.  Comparando médias (t-test)\
+       - [Materiais do prof Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/5301/lecture1.pdf)
+6.  Comparando médias de vários grupos (ANOVA)
+7.  Correlação e regressão simples
+8.  Comparando médias de vários grupos com ANOVA fatorial: parte 1
+9.  Comparando médias de vários grupos com ANOVA fatorial: parte 2
+10. Regressão múltipla
+11. Análise psicométrica e análise fatorial
+12. Análise de cluster
 
 ## Atividades
 
