@@ -17,12 +17,12 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
 2.  [Desenho de pesquisas em psicologia](http://www.labape.com.br/rprimi/ds/slides/a1_intro.html)
 3.  [Examinando variáveis com com estatísticas descritivas e gráficos. Rodando análises descritivas no JASP](http://www.labape.com.br/rprimi/ds/slides/a2_descri_stats.ppt)
 4.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
-    -    [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/bayes/lecture1.pdf)  
-    -    [Calculadora de probabilidades para inferências](https://tomfaulkenberry.shinyapps.io/dist_calc/)  
-5.  Comparando médias (t-test)  
-    -    [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/5301/lecture1.pdf)  
-6.  Comparando médias de vários grupos (ANOVA)  
-    -    [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/5301/lecture3.pdf)  
+    -   [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/bayes/lecture1.pdf)\
+    -   [Calculadora de probabilidades para inferências](https://tomfaulkenberry.shinyapps.io/dist_calc/)\
+5.  Comparando médias (t-test)
+    -   [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/5301/lecture1.pdf)\
+6.  Comparando médias de vários grupos (ANOVA)
+    -   [Materiais do prof Dr. Tom Faukenberry](https://github.com/rprimi/courses/blob/master/canvas/5301/lecture3.pdf)\
 7.  Correlação e regressão simples
 8.  Comparando médias de vários grupos com ANOVA fatorial: parte 1
 9.  Comparando médias de vários grupos com ANOVA fatorial: parte 2
