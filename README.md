@@ -17,12 +17,15 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   [t0_introdução.pptx](https://github.com/rprimi/ds_stat/blob/main/slides/t0_introdução.pptx)
 2.  Instalação R e R-studio R-markdown e JASP\
     -   R e R-Studio - <https://cran.r-project.org> - <https://rstudio.github.io/visual-markdown-editing/#/>
-    -   tidyverse
     -   R-markdown Slides: <http://www.labape.com.br/rprimi/ds/garrett_grolemund_r_markdown.pdf>
     -   R-markdown cheatsheet <https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
-    -   ggplot <https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf> <https://rstudio.cloud/learn/cheat-sheets>
+    -   Quarto: https://r4ds.hadley.nz/quarto
     -   Jasp <https://jasp-stats.org>
+    -   Trazendo dados no R
+    -   https://www.oecd.org/en/about/projects/international-early-learning-and-child-well-being-study.html#data
+        
 3.  Dados no R: tipos, estruturas e classes\
+    -   [Tipos_de_dados_no_r](https://github.com/rprimi/ds_stat/blob/main/slides/Tipos_de_dados_no_r.Rmd)
 4.  Análise exploratória gráfica: ggplot\
 5.  Análise exploratória gráfica: ggplot\
 6.  Organização transformação e manipulação de dados: dplyr\
