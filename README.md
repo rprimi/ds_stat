@@ -2,7 +2,7 @@
 
 Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação (mestrado e doutorado) da Universidade São Francisco
 
-![](slides/images/paste-785C7DB4.png)
+![](slides/imagens/paste-785C7DB4.png)
 
 ## Objetivo
 
@@ -19,11 +19,10 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   R e R-Studio - <https://cran.r-project.org> - <https://rstudio.github.io/visual-markdown-editing/#/>
     -   R-markdown Slides: <http://www.labape.com.br/rprimi/ds/garrett_grolemund_r_markdown.pdf>
     -   R-markdown cheatsheet <https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
-    -   Quarto: https://r4ds.hadley.nz/quarto
+    -   Quarto: <https://r4ds.hadley.nz/quarto>
     -   Jasp <https://jasp-stats.org>
     -   Trazendo dados no R
-    -   https://www.oecd.org/en/about/projects/international-early-learning-and-child-well-being-study.html#data
-        
+    -   <https://www.oecd.org/en/about/projects/international-early-learning-and-child-well-being-study.html#data>
 3.  Dados no R: tipos, estruturas e classes\
     -   [Tipos_de_dados_no_r](https://github.com/rprimi/ds_stat/blob/main/slides/Tipos_de_dados_no_r.Rmd)
 4.  Análise exploratória gráfica: ggplot\
