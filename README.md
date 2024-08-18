@@ -14,7 +14,7 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
 ## Programa
 
 1.  Introdução: data science, machine learning e deep learnig\
-    -   [https://github.com/rprimi/ds_stat/blob/main/slides/t0_introdução.pptx\\](https://github.com/rprimi/ds_stat/blob/main/slides/t0_introdução.pptx\){.uri}
+    -   [t0_introdução.pptx](https://github.com/rprimi/ds_stat/blob/main/slides/t0_introdução.pptx)
 2.  Instalação R e R-studio R-markdown e JASP\
     -   R e R-Studio - <https://cran.r-project.org> - <https://rstudio.github.io/visual-markdown-editing/#/>
     -   tidyverse
