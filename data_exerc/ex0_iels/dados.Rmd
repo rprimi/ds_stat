@@ -1,0 +1,23 @@
+---
+title: "dados"
+author: "Ricardo Primi"
+date: "2024-08-19"
+output: html_document
+---
+
+## Importa banco de dados
+
+```{r}
+
+library(haven)
+
+base_iels <- read_sav("IELS database.sav")
+
+View(IELS_database)
+
+save.image("~/Dropbox (Personal)/Ciencia_de_dados_stat/ds_stat/data_exerc/ex0_iels/base.RData")
+
+
+
+```
+
