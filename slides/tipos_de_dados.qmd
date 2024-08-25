@@ -1,14 +1,14 @@
 ---
-title: Estrutura de dados R
-author: "Ricardo Primi"
-output: html_document
+title: "Tipos de dados no R"
+format: html
+editor: source
 ---
 
 ## Estrutura de dados (objetos) no R (Kobacoff, 2015)
 
 ![](imagens/datastruc.png)
 
-![](imagens/data-structures-overview.png) 
+![](imagens/data-structures-overview.png)
 
 ![](imagens/summary-tree-atomic.png)
 
@@ -75,7 +75,8 @@ length(a)
 -   Vetores nomeados
 
 ```{r}
-library(tidyverse)
+
+
 v <- c(x = 1, y = 2, z = 4)
 names(v)
 
@@ -85,21 +86,8 @@ attributes(v)
 str(v)
 
 v["z"]
-glimpse(v)
 
 v[ "z" ]
-
-class(names(v))
-
-v <- set_names(1:5, c("A", "B", "C", "D", "E"))
-
-resp <- c("A", "B", "A","C", "A", "D","A", "E", "A", "E", "A")
-
-v["C"]
-v[resp]
-
-
-
 
 
 
