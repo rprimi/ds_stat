@@ -1,0 +1,41 @@
+---
+title: "dados_base_subset"
+format: html
+editor: source
+---
+
+## IELS database
+```{r}
+library(haven)
+base_iels <- read_sav("IELS database.sav")
+```
+
+## Dicionário
+
+```{r}
+
+glimpse(IELS_database)
+
+library(sjmisc)
+library(labelled)
+
+# labelled::convert_list_columns_to_character(IELS_database)
+dic <- labelled::generate_dictionary(IELS_database)
+
+library(xlsx)
+write.xlsx2(dic, file = "data/dic.xlsx")
+```
+
+## Subset para aula e pesquisa
+```{r}
+
+library(readxl)
+library(tidyverse)
+
+dic_subset <- read_excel("dic.xlsx", sheet = "dic1")
+base_iels1 <- base_iels %>% select(all_of(dic_subset$variable))
+
+saveRDS(base_iels1, file = "base_iels1.RDS")
+
+```
+

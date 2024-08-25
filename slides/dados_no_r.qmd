@@ -1,0 +1,62 @@
+---
+title: "Dados no R"
+format: html
+editor: source
+---
+## Trazendo e explorando dados no R.
+
+- Organizando o trabalho criando projetos
+- Importando dados
+- Comandos comuns para "entender" os dados
+- Tipos de dados
+- Pacotes para calcular estatísticas descritivas
+
+- Bem vindo ao Quarto! (https://quarto.org)
+
+### Dados IELS 
+
+- Importa base
+```{r}
+
+library(haven)
+base_iels <- read_sav("IELS database.sav")
+View(IELS_database)
+
+```
+
+- Salva em `base.Rdata`
+```{r}
+save.image("~/Dropbox (Personal)/Ciencia_de_dados_stat/ds_stat/data_exerc/ex0_iels/base.RData")
+```
+
+### Exercício 1
+
+1. Selecione um local no seu computador e crie um projeto no R-studio
+2. Baixe a base do iels e cole na pasta do projeto
+3. Crie um arquivo Quarto e Importe a base
+4. Salve os dados do projeto em um arquivo RData
+5. Feche o projeto e abra-o de novo
+
+### Comandos comuns para "entender" os dados (base R)
+
+- Primeiro leia os dados selecionados
+
+```{r}
+  bd_iels <- readRDS("../data_exerc/ex0_iels/base_iels1.RDS")
+
+```
+
+- nomes das colunas
+- vizualizar o dataframe
+- selecionar colunas 
+- selecionar linhas
+- criar novo dataframe
+- estrutura do arquivo
+- base r ()
+
+
+```{r}
+names(bd_iels)
+```
+
+- 

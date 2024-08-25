@@ -25,17 +25,14 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   <https://www.oecd.org/en/about/projects/international-early-learning-and-child-well-being-study.html#data>
 3.  Dados no R: tipos, estruturas e classes\
     -   [Tipos_de_dados_no_r](https://github.com/rprimi/ds_stat/blob/main/slides/Tipos_de_dados_no_r.Rmd)
-4.  Análise exploratória gráfica: ggplot\
-5.  Análise exploratória gráfica: ggplot\
-6.  Organização transformação e manipulação de dados: dplyr\
-7.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras\
-8.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras\
-9.  t-test e ANOVA\
-10. Regressão simples e multipla\
-11. Regressão simples e multipla\
-12. ANOVA\
-13. Análise Psicométrica\
-14. Análise Fatorial Exploratória\
-15. Análise Fatorial Exploratória
+4.  Análise exploratória gráfica: ggplot
+5.  Organização transformação e manipulação de dados: dplyr
+6.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
+7.  t-test e ANOVA
+8. Regressão simples e multipla
+9. ANOVA
+10. Análise Psicométrica
+11. Análise Fatorial Exploratória
+
 
 ## Atividades
