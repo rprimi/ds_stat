@@ -23,8 +23,12 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   Jasp <https://jasp-stats.org>
     -   Trazendo dados no R
     -   <https://www.oecd.org/en/about/projects/international-early-learning-and-child-well-being-study.html#data>
-3.  Dados no R: tipos, estruturas e classes\
-    -   [Tipos_de_dados_no_r](https://github.com/rprimi/ds_stat/blob/main/slides/Tipos_de_dados_no_r.Rmd)
+3.  Dados no R
+    -   [Importa e entende dados no r](https://github.com/rprimi/ds_stat/blob/main/slides/dados_no_r.qmd)
+    -   [Tipos de dados no R](https://github.com/rprimi/ds_stat/blob/main/slides/tipos_de_dados.qmd)
+    -   [Estatísticas descritivas](https://github.com/rprimi/ds_stat/blob/main/slides/descritivas.qmd)
+    
+    
 4.  Análise exploratória gráfica: ggplot
 5.  Organização transformação e manipulação de dados: dplyr
 6.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
