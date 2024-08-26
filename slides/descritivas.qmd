@@ -1,0 +1,82 @@
+---
+title: "Estatísticas descritivas"
+format: html
+editor: source
+---
+
+## Dados
+
+```{r}
+  bd_iels <- readRDS("../data_exerc/ex0_iels/base_iels1.RDS")
+
+  library(readxl)
+  dic_subset <- read_excel("../data_exerc/ex0_iels/dic.xlsx", sheet = "dic1")
+```
+
+## Variáveis 
+
+```{r}
+names(bd_iels)
+```
+
+## Tabelas de frequencias e tabelas cruzadas
+
+- pacote `sjmisc` [sjmisc](https://cran.r-project.org/web/packages/sjmisc/index.html)
+
+```{r}
+library(sjmisc)
+
+	
+frq(c$ELPAQ0501)
+frq(bd_iels$ELCHQ0501)
+
+flat_table(bd_iels, ELPAQ0501, ELCHQ0501)
+
+```
+
+## Descritivas
+
+- pacote `psych` [psych](https://cran.r-project.org/web/packages/psych/index.html)
+- pacote  `skimr` [skimr](https://docs.ropensci.org/skimr/)
+- pacote `gtsummary` [gtsummary](https://www.danieldsjoberg.com/gtsummary/)
+
+
+```{r}
+psych::describe(bd_iels[ , 11:23])
+psych::describeBy(bd_iels[ , c(9, 11:23)], group = 1 )
+
+skimr::skim(bd_iels[ , 11:23])
+gtsummary::tbl_summary(bd_iels[ , 11:23])
+
+```
+
+## Correlações 
+
+- pacote `correlation` [correlation](https://easystats.github.io/correlation/)
+- pacote `corrr` [corrr](https://corrr.tidymodels.org)
+- pacote `psych` 
+
+
+```{r}
+install.packages("correlation")
+install.packages("insight")
+
+correlation::correlation(bd_iels[ , 11:23])
+psych::corr.test(bd_iels[ , 11:23])
+corrr::correlate(bd_iels[ , 11:23])
+
+
+```
+
+```{r}
+r <- corrr::correlate(bd_iels[ , 11:23])
+corrr::network_plot(r)
+
+r <- correlation::correlation(bd_iels[ , 11:23])
+summary(r)
+plot(r)
+
+correlation::cormatrix_to_excel(r, filename = "r.xlsx")
+
+```
+
