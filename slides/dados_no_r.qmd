@@ -48,6 +48,19 @@ save.image("~/Dropbox (Personal)/Ciencia_de_dados_stat/ds_stat/data_exerc/ex0_ie
 
 - nomes das colunas
 - vizualizar o dataframe
+- selecionar colunas 
+- selecionar linhas
+- criar novo dataframe
+- estrutura do arquivo
+- base r ()
+
+
+```{r}
+names(bd_iels)
+```
+
+- 
+
 - saber qual classe é o objeto
 - obter a a dimensão do dataframe
 - selecionar colunas 
@@ -78,4 +91,8 @@ dic_subset <- read_excel("../data_exerc/ex0_iels/dic.xlsx", sheet = "dic1")
 2. Quais colunas tem esse arquivo
 3. Qual a dimensão desse arquivo? 
 4. Qual o tipo de objeto ?
+<<<<<<< HEAD
 5. Agora crie um dataframe da bse iels so com as respostas dos professores da avaliação socioemocional
+=======
+5. Agora crie um dataframe da bse iels so com as respostas dos professores da avaliação socioemocional
+

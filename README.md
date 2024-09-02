@@ -31,10 +31,9 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
 5.  Organização transformação e manipulação de dados: dplyr
 6.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
 7.  t-test e ANOVA
-8. Regressão simples e multipla
-9. ANOVA
+8.  Regressão simples e multipla
+9.  ANOVA
 10. Análise Psicométrica
 11. Análise Fatorial Exploratória
-
 
 ## Atividades
