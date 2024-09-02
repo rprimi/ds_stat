@@ -28,6 +28,7 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   [Tipos de dados no R](https://github.com/rprimi/ds_stat/blob/main/slides/tipos_de_dados.qmd)
     -   [Estatísticas descritivas](https://github.com/rprimi/ds_stat/blob/main/slides/descritivas.qmd)
 4.  Análise exploratória gráfica: ggplot
+    -   [Estatísticas descritivas](https://github.com/rprimi/ds_stat/blob/main/slides/ggplot1.qmd)
 5.  Organização transformação e manipulação de dados: dplyr
 6.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
 7.  t-test e ANOVA

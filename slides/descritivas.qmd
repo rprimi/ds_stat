@@ -25,10 +25,10 @@ names(bd_iels)
 
 ```{r}
 library(sjmisc)
-
+library(labelled)
 	
-frq(c$ELPAQ0501)
-frq(bd_iels$ELCHQ0501)
+sjmisc::frq(bd_iels$ELPAQ0501)
+
 
 flat_table(bd_iels, ELPAQ0501, ELCHQ0501)
 
