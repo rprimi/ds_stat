@@ -12,15 +12,16 @@ editor: source
 
 ![](imagens/summary-tree-atomic.png)
 
--   Vetores
+-   Vetores https://www.rkabacoff.com/project/quickr-project/
 
 <https://stringr.tidyverse.org>
 
 ```{r, eval=FALSE, warning=FALSE}
 
-a <- c(1, 2, 5, 3, 6, -2, 4)
+a <- c(1, 2, 5, 3, 6, 2, 4)
 b <- c("one", "two", "three")
 c <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)
+
 
 typeof(a)
 typeof(b)
@@ -30,6 +31,8 @@ d <- c(1L, 2L, 5L, 3L, 6L, -2L, 4L)
 typeof(d)
 
 a[1:3]
+
+
 
 ```
 
@@ -58,18 +61,17 @@ str(c)
 
 ```{r}
 
-
 v <- c(x = 1, y = 2, z = 4)
-names(v)
-
 class(v)
+str(v)
 
 attributes(v)
-str(v)
 
 v["z"]
 
+v[3]
 
+names(v)
 
 
 ```
@@ -85,17 +87,28 @@ x["B"]
 x[5]
 
 
-
+x
 x[c(3, 2, 5)]
 
+x
 x[c(1, 1, 5, 5, 5, 2)]
 
 
 x <- c(10, 3, NA, 5, 8, 1, NA)
+mean(x, na.rm = TRUE)
+
+l <- is.na(x)
+!l
+!-5
+
+
+x[!l]
 
 x[ !is.na(x) ]
 
-`[`
+x[ !is.na(x) ]
+
+`[`()
 
 ```
 
@@ -106,12 +119,17 @@ x[ !is.na(x) ]
 y <- matrix(1:20, nrow=5, ncol=4)
 y <- 1:20
 
+y
+y[, 1]
 
 class(y)
 typeof(y)
 str(y) 
-glimpse(y)
 attributes(y)
+
+library(dplyr)
+glimpse(y)
+
 
 
 
@@ -126,7 +144,7 @@ matriz <- matrix(
 
 matriz
 attributes(matriz)
-
+matriz
 matriz["R1", "C2"]
 
 class(matriz)
@@ -148,23 +166,25 @@ age <- c(25, 34, 28, 52)
 diabetes <- c("Type1", "Type2", "Type1", "Type1")
 status <- c("Poor", "Improved", "Excellent", "Poor")
 
+df <- data.frame(patientID, age, diabetes, status)
+df <- tibble(patientID, age, diabetes, status)
+df
 
-patientdata <- data.frame(patientID, age, diabetes, status)
-patientdata <- tibble(patientID, age, diabetes, status)
-patientdata
+class(df)
+typeof(df)
 
-class(patientdata)
-typeof(patientdata)
-str(patientdata)
-glimpse(patientdata)
+str(df)
+glimpse(df)
 
-typeof(patientdata[1 ,  ])
-typeof(patientdata[ ,  1])
-str(patientdata[1 ,  ])
+df[1 ,  ]
+df[ ,  1]
 
+typeof(df[1 ,  ])
+typeof(df[ ,  1])
 
-patientdata$sintomas <- I(list(c(1, 4), c(1, 2, 3, 4), c(1), c(2,4)))
+str(df[1 ,  ])
 
+# df$sintomas <- I(list(c(1, 4), c(1, 2, 3, 4), c(1), c(2,4)))
 
 
 ```
@@ -189,19 +209,24 @@ as.character(status)
 levels(status)
 
 
-class()
-
-
-sex <- c("M", "F", "F", "F", "F", "M", "X")
 
 sex <- c(1, 2, 1, 1, 2, 2, 1, 1)
+sex
+str(sex)
+
 
 sex <- factor(sex)
-
+sex
+str(sex)
 levels(sex)
-levels(sex)
 
-forcats::fct_c(sex, status)
+sex <- factor(sex, labels = c("M", "F"))
+str(sex)
+
+forcats::
+
+
+
 
 
 ```
@@ -222,27 +247,16 @@ mylist
 names(mylist)
 
 mylist$title
-mylist$ages
+
+mylist[["title"]]
+
+mylist
+mylist[3]
+mylist[[3]]
+
 
 mylist[[1]]
 
-str(mylist)
-
-class(mylist[1])
-mylist$title
-
-class(mylist[[1]])
-
-mylist[[3]]
-mylist[[4]]
-
-mylist[4]
-
-str(mylist[3])
-
-mylist[[3]][ , 2]
-
-x <- NULL
 
 ```
 
@@ -251,6 +265,8 @@ x <- NULL
 x1 <- list(c(1, 2), c(3, 4))
 x2 <- list(list(1, 2), list(3, 4))
 x3 <- list(a = 1, b = list( c= 2, d = list(e = 3)))
+
+x1[[1]][[1]][[1]]
 
 x3$b$d$e
         
@@ -271,8 +287,7 @@ x2[[1]]
 
 ![](imagens/lists-structure.png)
 
-![](imagens/lists-subsetting.png)
-## Sumario dos comandos 
+![](imagens/lists-subsetting.png) \## Sumario dos comandos
 
 ```{r}
 c()
@@ -292,5 +307,3 @@ as.data.frame()
 as.list()
 
 ```
-
-

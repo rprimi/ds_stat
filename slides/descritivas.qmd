@@ -11,12 +11,18 @@ editor: source
 
   library(readxl)
   dic_subset <- read_excel("../data_exerc/ex0_iels/dic.xlsx", sheet = "dic1")
+  
+  bd_iels <- as.data.frame(bd_iels)
+  
+  
+  
 ```
 
 ## Variáveis 
 
 ```{r}
 names(bd_iels)
+str(bd_iels)
 ```
 
 ## Tabelas de frequencias e tabelas cruzadas
@@ -28,9 +34,11 @@ library(sjmisc)
 library(labelled)
 	
 sjmisc::frq(bd_iels$ELPAQ0501)
-
+sjmisc::frq(bd_iels$ELCHQ0501)
 
 flat_table(bd_iels, ELPAQ0501, ELCHQ0501)
+
+
 
 ```
 
@@ -42,10 +50,23 @@ flat_table(bd_iels, ELPAQ0501, ELCHQ0501)
 
 
 ```{r}
-psych::describe(bd_iels[ , 11:23])
-psych::describeBy(bd_iels[ , c(9, 11:23)], group = 1 )
+t1 <- psych::describe(bd_iels[ , 11:23])
+str(t1)
 
-skimr::skim(bd_iels[ , 11:23])
+names(t1)
+rownames(t1)
+
+t2 <- psych::describeBy(
+ bd_iels[ , c(9, 11:23)], group = 1 )
+
+str(t2)
+
+str(t2$`1`)
+
+t1b <- skimr::skim(bd_iels[ , 11:23])
+
+str(t1b)
+
 gtsummary::tbl_summary(bd_iels[ , 11:23])
 
 ```
@@ -61,21 +82,31 @@ gtsummary::tbl_summary(bd_iels[ , 11:23])
 install.packages("correlation")
 install.packages("insight")
 
+t4 <- psych::corr.test(bd_iels[ , 11:23])
+
+names(t4)
+
+str(t4)
+
+t4 <- t4$r
+
+str(t4)
 correlation::correlation(bd_iels[ , 11:23])
-psych::corr.test(bd_iels[ , 11:23])
+dimnames(t4)
 corrr::correlate(bd_iels[ , 11:23])
 
 
 ```
 
 ```{r}
+
 r <- corrr::correlate(bd_iels[ , 11:23])
+corrr::rplot(r)
 corrr::network_plot(r)
 
 r <- correlation::correlation(bd_iels[ , 11:23])
 summary(r)
 plot(r)
-
 correlation::cormatrix_to_excel(r, filename = "r.xlsx")
 
 ```
