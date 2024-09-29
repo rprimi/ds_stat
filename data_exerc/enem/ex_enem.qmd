@@ -1,0 +1,46 @@
+---
+title: "Exercício com a base do ENEM"
+format: html
+editor: source
+---
+
+## Exercício 2
+
+- Importe a base
+- Importe ou crie um dicionário
+  - Leia o arquivo Excel
+  - Crie o dicionário usando o pacote labbeled
+- Estude a base 
+- Faça uma análise descritiva 
+- Faça um gáfico de distribuiçào de notas
+  - Tente fazer distribuição de notas por outra variável (genero, estado, ...)
+- Faça um gráfico de correlação de notas 
+  - Adicione dimensões usando cor, tamnho forma dos pontos
+  
+
+
+## Importa base e discionários
+
+- Base
+```{r}
+
+ load("enem.Rdata")
+ 
+ names(enem)
+
+
+```
+
+
+- Dicionários
+```{r}
+
+library(sjmisc)
+library(labelled)
+
+# labelled::convert_list_columns_to_character(IELS_database)
+dic <- labelled::generate_dictionary(enem, details = "full")
+
+dic$value_labels
+
+```

@@ -9,7 +9,7 @@ editor: visual
 ```{r}
   bd_iels <- readRDS("../data_exerc/ex0_iels/base_iels1.RDS")
 
-  library(readxl)
+    library(readxl)
   dic_subset <- read_excel("../data_exerc/ex0_iels/dic.xlsx", sheet = "dic1")
 ```
 
@@ -29,19 +29,24 @@ sjlabelled::get_labels(bd_iels)
 ### Bibliotecas
 
 ```{r}
+
 library(ggplot2)
 library(scales)
 library(labelled)
+
 ```
 
 ## Parte 1
 
 ### Qual a relação entre português e matemática?
 
--   Criando unm canvas
+-   Criando um canvas
 
 ```{r}
+
 ggplot(data = bd_iels)
+
+
 ```
 
 -   Adiciionando geoms
@@ -54,6 +59,13 @@ ggplot(data = bd_iels) +
   geom_point(mapping = aes(y = ELWMEPV1 , x = ELLITPV1))
 
 
+ggplot(data = bd_iels) + 
+  geom_point(mapping = aes(y = ELLITPV1  , x = SES))
+
+ggplot(data = bd_iels) + 
+  geom_point(mapping = aes(y = ELNUMPV1  , x = SES))
+	
+
 ```
 
 -   ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
@@ -63,16 +75,25 @@ ggplot(data = bd_iels) +
 ```{r}
 ggplot(data = bd_iels) + 
   geom_point(mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS)) +
-  geom_smooth(mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS))
+  geom_smooth(mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS), method = "lm")
+
+ggplot(data = bd_iels) + 
+   geom_point(mapping = aes(y = ELWMEPV1 , x = ELLITPV1)) +
+  geom_smooth(mapping =aes(y = ELWMEPV1 , x = ELLITPV1))
+
+ggplot(data = bd_iels) + 
+  # geom_point(mapping = aes(y = ELWMEPV1 , x = ELLITPV1)) +
+  geom_smooth( mapping = aes(y = ELWMEPV1 , x = ELLITPV1), method = "lm")
+
 ```
 
 -   Ou faça assim
 
 ```{r}
 
-ggplot(data = bd_iels,mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS)) + 
- geom_point() +
-  geom_smooth()
+ggplot(data = bd_iels, mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
 
   
 ```
@@ -89,8 +110,33 @@ ggplot(data = bd_iels,mapping = aes(y = ELWMEPV1 , x = AGE_MONTHS)) +
 
 ```{r}
 library(dplyr)
+library(sjlabelled)
 
-bd_iels$ITSEX <- as.factor(bd_iels$ITSEX)
+bd_iels$ITSEX <- factor(bd_iels$ITSEX, labels = get_labels(bd_iels$ITSEX))
+
+get_values(bd_iels$ITSEX)
+
+bd_iels$SES <- unclass(bd_iels$SES)
+
+
+
+ggplot(
+ data = bd_iels,
+ mapping = aes(y = ELINHPV1 , x = ELMFXPV1, color = ITSEX, size = SES)
+ ) +   
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Association of Executive Functions across sex ",
+       subtitle = "x = Mental Flexility, y = Inhibition",
+       x = "Mental Flexility",
+       y = " Inhibition",
+       color = "sexo",
+       size = "SES") +
+       theme_minimal()
+
+
+
+
 ggplot(
  data = bd_iels,
  mapping = aes(y = ELINHPV1 , x = ELMFXPV1, color = ITSEX)
@@ -101,8 +147,7 @@ ggplot(
        subtitle = "x = Mental Flexility, y = Inhibition",
        x = "Mental Flexility",
        y = " Inhibition",
-       color = "sexo" ) +
-  theme_classic()
+       color = "sexo" ) 
 
 plot(bd_iels$ELINHPV1, bd_iels$ELMFXPV1, col = "red" )
   
@@ -139,6 +184,13 @@ ITAGE, color = CNTRY)) +
 ggplot(data = bd_iels) + 
   geom_point(mapping = aes(y = ELINHPV1 , x = ELMFXPV1), color = "orange")
 
+bd_iels$ELWMEPV1 <- unclass(bd_iels$ELWMEPV1)
+
+ggplot(data = bd_iels) + 
+  geom_point(mapping = aes(y = ELINHPV1 , x = ELMFXPV1, color = ELWMEPV1, size=ELWMEPV1)) +
+  scale_color_continuous(type = "viridis")
+
+
 ```
 
 ### Uso de facets
@@ -146,10 +198,10 @@ ggplot(data = bd_iels) +
 ```{r}
 
 ggplot(data = bd_iels,
-       mapping = aes(y = ELWMEPV1 , x = 	ITAGE, color = CNTRY)) + 
- geom_point() +
- geom_smooth() +
- facet_wrap(~CNTRY)
+       mapping = aes(y = ELWMEPV1 , x = 	ITAGE)) + 
+ geom_point( aes(color = CNTRY), show.legend = F) +
+ geom_smooth( ) +
+ facet_grid(ITSEX~CNTRY)
 
 ggplot(data = bd_iels,
        mapping = aes(
@@ -172,6 +224,8 @@ glimpse(bd_iels)
 
 ```{r}
 
+
+
 ggplot(data = bd_iels,
        mapping = aes(y = ELWMEPV1 , x = 	ITAGE, color = CNTRY)) + 
  geom_point() +
@@ -179,10 +233,21 @@ ggplot(data = bd_iels,
  facet_wrap(~CNTRY)
 
 ggplot(data = bd_iels) + 
+  geom_histogram(mapping = aes(x = ELWMEPV1))
+
+ggplot(data = bd_iels) + 
   geom_histogram(mapping = aes(x = ELWMEPV1), 
-                 fill = "red", color = "white")
+                 fill = "red", color = "white") 
 
 
+ggplot(data = bd_iels) + 
+  geom_boxplot(mapping = aes(y = ELEDPPV1, x = ITSEX)) 
+ 
+ggplot(data = bd_iels) + 
+  geom_histogram(
+   mapping = aes(x = ELWMEPV1, fill = ITSEX), 
+   color = "white") +
+ facet_grid(ITSEX~.)
 
 ```
 
@@ -206,8 +271,9 @@ ggplot(data = bd_iels) +
 ```{r}
 
 
-ggplot(data = bd_iels) + 
-  geom_smooth(mapping = aes(y = ELEDPPV1, x = ELPAPRO))
+ggplot(data = bd_iels, mapping = aes(y = ELEDPPV1, x = ELPAPRO)) + 
+  geom_point() +
+  geom_smooth()
               
 ggplot(data = bd_iels) + 
   geom_smooth(mapping = aes(y = ELEDPPV1, x = ELPAPRO, color = ITSEX))
@@ -262,6 +328,7 @@ ggplot(data = bd_iels, mapping = aes(y = ELEDPPV1, x = ELPAPRO)) +
 library(sjmisc)
 frq(bd_iels$CNTRY)
 
+library(dplyr)
 
 ggplot(data = bd_iels, mapping = aes(y = ELEDPPV1, x = ELPAPRO)) + 
   geom_point(aes(color = ITSEX), alpha = 1/2)  +
@@ -277,11 +344,13 @@ ggplot(data = bd_iels, mapping = aes(y = ELEDPPV1, x = ELPAPRO)) +
 
 ```{r}
 
+bd_iels$EDUCAT_MOT <- factor(bd_iels$EDUCAT_MOT, labels = get_labels(bd_iels$EDUCAT_MOT)[1:6])
+
+
 frq(bd_iels$EDUCAT_MOT)
 
-
 ggplot(data = bd_iels) + 
-  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY)) +
+  geom_bar(mapping = aes(x = EDUCAT_MOT, fill =CNTRY), color = "white") +
   theme(axis.text.x  = element_text(angle=90, vjust=0.5) )
 
 ```
@@ -307,21 +376,18 @@ Grolemund & Wickham (2017): "You can learn which stat a geom uses by inspecting 
 ```{r}
 
 
-ggplot(data = bd_iels) + 
-  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY))
 
 ggplot(data = bd_iels) + 
-  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "dodge")
+  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "dodge", color = "white")
     
 ggplot(data = bd_iels) + 
-  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "stack")
+  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "stack", color = "white")
 
 ggplot(data = bd_iels) + 
-  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "fill")
+  geom_bar(mapping = aes(x = EDUCAT_MOT, fill = CNTRY), position = "fill", color = "white")
 
 
 ```
-
 
 -   Veja o código abaixo. Ele faz a conta primeiro e depois o gráfico. Note que precisamos indicar o argumento `stat =  "identity"` para dizer ao ggplot que deve considerar os valores como estão na base.
 
@@ -356,8 +422,6 @@ library(scales)
 ```{r}
 
 
-
-
 ggplot(data = bd_iels, aes(x =  EDUCAT_MOT, group=CNTRY)) + 
   geom_bar(
     aes(y = ..prop.., fill = CNTRY),
@@ -368,13 +432,12 @@ ggplot(data = bd_iels, aes(x =  EDUCAT_MOT, group=CNTRY)) +
     position = "dodge",
     vjust = -.5, stat= "count", size = 2) +
   scale_y_continuous(labels=percent_format()) +
+  theme(axis.text.x  = element_text(angle=90, vjust=0.5) ) +
   facet_grid(~CNTRY)
 
 
 
 ```
-
-
 
 ### Sistema de coordenadas
 
@@ -403,7 +466,6 @@ bar + coord_polar()
 
 ```
 
-
 ### Síntese: "The layered grammar of grafics"
 
 ggplot(data = <DATA>) + <GEOM_FUNCTION>( mapping = aes(<MAPPINGS>), stat = <STAT>, position = <POSITION> ) + <COORDINATE_FUNCTION> + <FACET_FUNCTION>
@@ -420,9 +482,8 @@ ggsave("f1.png" )
 
 ```
 
-
-
 ### Exercício 2
+
 -   Use a base do ENEM
 -   Escolha duas variáveis de caracterização dos sujeitos do ENEM (lembre-se que há uma questinário socio econômico)
 -   Faça um gráfico de barras com essas variáveis
@@ -500,8 +561,6 @@ ggplot( data = enem) +
 
 
 ```
-
-
 
 ```{r}
 ggplot(data = enem
