@@ -31,7 +31,7 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   [Estatísticas descritivas](https://github.com/rprimi/ds_stat/blob/main/slides/ggplot1.qmd)
     - Exercício com a base do ENEM
 5.  Organização transformação e manipulação de dados: dplyr
-    -   [Estatísticas descritivas](https://github.com/rprimi/ds_stat/blob/main/slides/dplyr.Rmd)
+    -   [dplyr](https://github.com/rprimi/ds_stat/blob/main/slides/dplyr.Rmd)
     
 6.  Introdução a probabilidade e distribuições estatísticas. Teste de hipóteses. Estimação de parâmetros estatísticos a partir de amostras
 7.  t-test e ANOVA
