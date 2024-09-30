@@ -7,19 +7,27 @@ editor: source
 ## Exercício 2
 
 - Importe a base
+   - Crie uma pasta (escolha um nome memorável)
+   - Baixe os arquivos do github
+   - Mova os arquivos para a pasta
+   - Crie um projeto na pasta
+   
 - Importe ou crie um dicionário
   - Leia o arquivo Excel
   - Crie o dicionário usando o pacote labbeled
+
 - Estude a base 
+
 - Faça uma análise descritiva 
-- Faça um gáfico de distribuiçào de notas
+- Faça um gáfico de distribuição de notas
   - Tente fazer distribuição de notas por outra variável (genero, estado, ...)
-- Faça um gráfico de correlação de notas 
+- 
+Faça um gráfico de correlação de notas 
   - Adicione dimensões usando cor, tamnho forma dos pontos
   
 
 
-## Importa base e discionários
+## Importa base e dicionários
 
 - Base
 ```{r}
@@ -28,7 +36,22 @@ editor: source
  
  names(enem)
 
+ summary(enem)
 
+ library(sjmisc)
+ library(labelled)
+ library(dplyr)
+ 
+ enem2 <- unclass(enem) %>% as_tibble()
+
+
+  mutate(across(where(is.labelled), unclass))
+ 
+
+ sjmisc::frq(enem, Q020, Q047)
+ sjmisc::flat_table(enem, NU_IDADE, IN_TREINEIRO)
+ 
+ ?flat_table
 ```
 
 
@@ -44,3 +67,29 @@ dic <- labelled::generate_dictionary(enem, details = "full")
 dic$value_labels
 
 ```
+
+
+```{r}
+
+glimpse(enem)
+
+library(ggplot2)
+
+ggplot(data = enem) + geom_histogram(aes(x=NU_NOTA_MT), color = "white")
+
+enem %>% 
+ mutate(TP_ESCOLA = as.character(TP_ESCOLA)) %>%
+ filter(TP_ESCOLA != "4") %>%
+ ggplot(aes(x = NU_NOTA_CH, fill = TP_ESCOLA)) + 
+  geom_histogram(aes(y = after_stat(count / tapply(count, PANEL, FUN = sum)[PANEL])), 
+                 color = "white", position = "identity") +  
+  facet_grid(as.character(TP_ESCOLA) ~ .) +
+  scale_y_continuous(labels = scales::percent) +  # Formata o eixo y como porcentagem
+  labs(y = "Proporção (%)", x = "NU_NOTA_CH", fill = "TP_ESCOLA") +
+  theme_minimal()
+
+
+
+
+```
+
