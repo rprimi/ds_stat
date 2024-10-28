@@ -8,7 +8,6 @@ output: html_document
 ### Bibliotecas
 
 ```{r}
-
 library(tidyverse)
 
 ```
@@ -16,37 +15,41 @@ library(tidyverse)
 ### Lê dados
 
 ```{r}
-load("../dados/enem.Rdata")
+load("../data_exerc/enem/enem.Rdata")
 ```
-
 
 ```{r}
 
 ```
 
 ### Transformação de dados com o `dplyr`
-![](../imagens/dplyr_tidyr.png)  
 
-![](../imagens/ciclo-ciencia-de-dados.png)  
+![](imagens/dplyr_tidyr.png)
 
+![](imagens/ciclo-ciencia-de-dados.png)
 
-* filter() - filtra linhas
-* select() - seleciona colunas
-* arrange() - ordena a base
-* mutate() - cria/modifica colunas
-* group_by() - agrupa a base
-* summarise() - sumariza a base
+-   filter() - filtra linhas
+-   select() - seleciona colunas
+-   arrange() - ordena a base
+-   mutate() - cria/modifica colunas
+-   group_by() - agrupa a base
+-   summarise() - sumariza a base
 
+### Exemplos: `filter`
 
-### Exemplos: `filter`  
-
-![](../imagens/filter.png){width=300px}  
+![](imagens/filter.png){width="300px"}
 
 ```{r}
-
-  filter(enem, TP_SEXO == "Feminino" )
-
+  names(enem)
   glimpse(enem$TP_SEXO)
+
+  table(enem$TP_SEXO)
+
+  filter(enem, TP_SEXO == "F" )
+  
+  enem %>% filter(TP_SEXO == "F")
+
+  
   
    filter(enem, NU_NOTA_MT > 700)
    filter(enem, NU_NOTA_MT > 700 & TP_SEXO == "Feminino")
@@ -54,7 +57,7 @@ load("../dados/enem.Rdata")
   
    df_alto <- enem %>% filter(NU_NOTA_MT > 700)
    
-   enem2 <- enem
+   enem2 <- enem %>% 
 
    c(0,0, 0, 1) %in% c(1, 2, 3)
    
@@ -88,10 +91,12 @@ load("../dados/enem.Rdata")
   !is.na(enem$TP_ENSINO)
   
 ```
-![](../imagens/transform-logical.png)
+
+![](imagens/transform-logical.png) 
+
 Grolemund & Wickham (2017, <https://r4ds.had.co.nz/transform.html>, 5.2):
 
-"The order of operations doesn’t work like English. You can’t write filter(flights, month == (11 | 12)), which you might literally translate into “finds all flights that departed in November or December”. Instead it finds all months that equal 11 | 12, an expression that evaluates to TRUE. In a numeric context (like here), TRUE becomes one, so this finds all flights in January, not November or December. This is quite confusing! A useful short-hand for this problem is x %in% y"
+"The order of operations doesn’t work like English. You can’t write filter(flights, month == (11 \| 12)), which you might literally translate into “finds all flights that departed in November or December”. Instead it finds all months that equal 11 \| 12, an expression that evaluates to TRUE. In a numeric context (like here), TRUE becomes one, so this finds all flights in January, not November or December. This is quite confusing! A useful short-hand for this problem is x %in% y"
 
 ```{r}
 
@@ -107,17 +112,15 @@ month %in% c(11, 12)
 
 ```
 
+![](imagens/logic_comp.png)
 
-![](../imagens/logic_comp.png)  
+![](imagens/pipe.png)
 
-![](../imagens/pipe.png)  
-
-![](../imagens/pipe2.png)  
-
+![](imagens/pipe2.png)
 
 ### Operações com variáveis cujos valores contenham "not available" `NA`
-Grolemund & Wickham (2017):
-"filter() only includes rows where the condition is TRUE; it excludes both FALSE and NA values" () 
+
+Grolemund & Wickham (2017): "filter() only includes rows where the condition is TRUE; it excludes both FALSE and NA values" ()
 
 ```{r}
   
@@ -138,16 +141,13 @@ Grolemund & Wickham (2017):
 
 ```
 
-
 ### Exemplos: `select`
 
-![](../imagens/select.png){width=400px}  
+![](imagens/select.png){width="400px"}
 
-
-* https://dplyr.tidyverse.org/reference/select.html
-* https://github.com/tidymodels/corrr
-* https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
-
+-   <https://dplyr.tidyverse.org/reference/select.html>
+-   <https://github.com/tidymodels/corrr>
+-   <https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html>
 
 ```{r}
   
@@ -176,7 +176,7 @@ Grolemund & Wickham (2017):
 
 ### Exemplos: `arrange`
 
-![](../imagens/arrange.png){width=400px}  
+![](imagens/arrange.png){width="400px"}
 
 ```{r}
   arrange(mtcars, mpg)
@@ -206,8 +206,7 @@ Grolemund & Wickham (2017):
 
 ### Exemplos: `mutate`
 
-![](../imagens/mutate.png){width=400px}  
-
+![](imagens/mutate.png){width="400px"}
 
 ```{r}
 
@@ -250,11 +249,13 @@ Grolemund & Wickham (2017):
     arrange(rank)
 
 ```
+
 ### Exemplos: `group_by`
 
-slides 
+slides
 
-![](../imagens/group_by.png){width=400px}  
+![](imagens/group_by.png){width="400px"}
+
 ```{r}
 
   group_by(enem, SG_UF_RESIDENCIA) 
@@ -284,9 +285,10 @@ slides
   df %>% ungroup() %>% tally
 
 ```
+
 ### Exemplos `summarise`
 
-![](../imagens/summarise.png){width=400px}  
+![](imagens/summarise.png){width="400px"}
 
 ```{r}
   
@@ -354,7 +356,8 @@ slides
 
 ### Tarefas comuns de manipulação de dados
 
-* Selecionar uma coluna como vetor de um `dataframe`  
+-   Selecionar uma coluna como vetor de um `dataframe`\
+
 ```{r}
 
 enem %>% select(NU_NOTA_MT)
@@ -373,7 +376,8 @@ enem %>% .$NU_NOTA_MT
 
 ```
 
-* Calcular matriz de correlação  
+-   Calcular matriz de correlação
+
 ```{r}
 
  library(psych)
@@ -419,7 +423,8 @@ enem %>% .$NU_NOTA_MT
   
 ```
 
-* Criar tabelas normativas
+-   Criar tabelas normativas
+
 ```{r}
 
   enem %>% 
@@ -457,19 +462,18 @@ enem %>% .$NU_NOTA_MT
     geom_line(aes(y = perc_CH, x = NU_NOTA_CH), alpha = 1/2, color = "orange") +
     geom_line(aes(y = perc_CN, x = NU_NOTA_CN), alpha = 1/2, color = "blue") +
     geom_line(aes(y = perc_LC, x = NU_NOTA_LC), alpha = 1/2, color = "yellow") +
-    scale_y_continuous(breaks = breaks_extended(10), labels = label_percent()) +
-    scale_x_continuous(breaks = breaks_extended(20)) 
+    scale_y_continuous(breaks = scales::breaks_extended(10), labels = scales::label_percent()) +
+    scale_x_continuous(breaks = scales::breaks_extended(20)) 
   
     
 
 ```
 
-* Exercício 
-  Como fazer o grafico cima com uma curva por prova ?
-  
-* Transformar escores para escalas padronizadas (POMP, z)  
+-   Exercício Como fazer o grafico cima com uma curva por prova ?
 
-https://scales.r-lib.org
+-   Transformar escores para escalas padronizadas (POMP, z)
+
+<https://scales.r-lib.org>
 
 ```{r}
 
@@ -503,8 +507,8 @@ https://scales.r-lib.org
 
 ```
 
-* Saber quantas respostas cada pessoa deixou sem responder ("missing")
--  usando row-wise https://dplyr.tidyverse.org/articles/rowwise.html
+-   Saber quantas respostas cada pessoa deixou sem responder ("missing")
+-   usando row-wise <https://dplyr.tidyverse.org/articles/rowwise.html>
 
 ```{r}
 enem %>%
@@ -524,7 +528,8 @@ enem %>%
 
 ```
 
-* Calcular escores com soma/média de itens
+-   Calcular escores com soma/média de itens
+
 ```{r}
 enem %>%
   rowwise %>%
@@ -544,8 +549,7 @@ l$groups %>% view
  
 ```
 
-
-* Análise multinível: centrar por grupo e adicionar média dos grupos  
+-   Análise multinível: centrar por grupo e adicionar média dos grupos
 
 ```{r}
   

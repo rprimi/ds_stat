@@ -32,6 +32,21 @@ Faça um gráfico de correlação de notas
 - Base
 ```{r}
 
+names(enem)
+
+enem <- enem %>% filter(!is.na(NU_NOTA_CN)
+                        & !is.na(NU_NOTA_CH)
+                        & !is.na(NU_NOTA_LC)
+                        & !is.na(NU_NOTA_MT)
+                        )
+
+
+
+enem %>% select(NU_NOTA_CN, NU_NOTA_CH, NU_NOTA_LC, NU_NOTA_MT) %>%
+psych::describe( )
+
+write.csv2(enem, file = "enem.csv")
+
  load("enem.Rdata")
  
  names(enem)
@@ -51,7 +66,7 @@ Faça um gráfico de correlação de notas
  sjmisc::frq(enem, Q020, Q047)
  sjmisc::flat_table(enem, NU_IDADE, IN_TREINEIRO)
  
- ?flat_table
+ flat_table
 ```
 
 
