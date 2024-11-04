@@ -15,7 +15,9 @@ library(tidyverse)
 ### Lê dados
 
 ```{r}
+
 load("../data_exerc/enem/enem.Rdata")
+
 ```
 
 ```{r}
@@ -45,7 +47,9 @@ load("../data_exerc/enem/enem.Rdata")
 
   table(enem$TP_SEXO)
 
-  filter(enem, TP_SEXO == "F" )
+  TP_ESCOLA == 2
+  
+  filter(enem, TP_ESCOLA == 2 | TP_ESCOLA == 3 )
   
   enem %>% filter(TP_SEXO == "F")
 
@@ -57,11 +61,23 @@ load("../data_exerc/enem/enem.Rdata")
   
    df_alto <- enem %>% filter(NU_NOTA_MT > 700)
    
-   enem2 <- enem %>% 
+  
 
    c(0,0, 0, 1) %in% c(1, 2, 3)
    
-   enem$SG_UF_NASCIMENTO %in% c("RS", "SP")
+  
+  
+  filter(enem, enem$SG_UF_RESIDENCIA %in% c("SP", "PI", "MG"))
+  
+  enem %>% 
+   filter(enem$SG_UF_RESIDENCIA %in% c("SP", "PI", "MG"))
+  
+  
+```
+
+
+```{r}
+ enem$SG_UF_NASCIMENTO %in% c("RS", "SP")
    
   filter(enem, SG_UF_NASCIMENTO %in% c("RS", "SP"))
   filter(enem, str_detect(TP_ST_CONCLUSAO, "cursando"))
@@ -71,7 +87,7 @@ load("../data_exerc/enem/enem.Rdata")
   
   enem %>%  
     ggplot() + geom_bar(
-    aes(y = NU_NOTA_MT, x = TP_ENSINO, fill = TP_ENSINO), 
+    aes(y = NU_NOTA_MT, x = TP_ESCOLA, fill = TP_ESCOLA), 
         stat = "summary", 
         fun = "mean", 
       show.legend = FALSE
@@ -89,7 +105,6 @@ load("../data_exerc/enem/enem.Rdata")
     coord_flip()
 
   !is.na(enem$TP_ENSINO)
-  
 ```
 
 ![](imagens/transform-logical.png) 
