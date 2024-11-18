@@ -40,10 +40,12 @@ Materiais do curso Ciência de Dados Aplicada à Psicometria da Pós Graduação
     -   [ANOVA](https://github.com/rprimi/ds_stat/blob/main/slides/Inferencia_ANOVA_regressaao.ppt)
 
 8.  Regressão simples e múltipla
- ,,,-   [Regressão simples](https://github.com/rprimi/ds_stat/blob/main/slides/cor_regr_simples.pptx)
+    -   [Regressão simples](https://github.com/rprimi/ds_stat/blob/main/slides/cor_regr_simples.pptx)
     -   [Regressão múltipla](https://github.com/rprimi/ds_stat/blob/main/slides/cor_regr_multipla.pptx)
+    
 
 9. Análise Psicométrica
+
 10. Análise Fatorial Exploratória
 
 ## Atividades
