@@ -20,9 +20,6 @@ load("../data_exerc/enem/enem.Rdata")
 
 ```
 
-```{r}
-
-```
 
 ### Transformação de dados com o `dplyr`
 
@@ -152,7 +149,7 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
   
   na.rm = TRUE
   
-  is.na(NA)
+  is.na(c(1, 2, 3, NA))
 
 ```
 
@@ -165,7 +162,8 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
 -   <https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html>
 
 ```{r}
-  
+  names(enem)
+
   select(enem, NU_NOTA_CN, NU_NOTA_MT)
   select(enem, NU_NOTA_CN:NU_NOTA_REDACAO)
   
@@ -174,6 +172,7 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
   select(df, -NU_NOTA_CN)
   
   select(df, -c(NU_NOTA_CN, NU_NOTA_LC))
+  
   
   # helper functions
   select(enem, contains("NU_NOTA"))
@@ -206,7 +205,7 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
   names(enem)
   
   enem %>% 
-    arrange(desc(mt_scores)) %>%
+    arrange(mt_scores) %>%
     select(TP_SEXO, NU_NOTA_MT, mt_scores, everything()) %>%
     view
   
@@ -215,6 +214,8 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
     select(TP_SEXO, NU_NOTA_LC, mt_scores, everything()) %>%
     view
 
+  enem %>% ggplot(aes(y=NU_NOTA_MT, x=mt_scores, color = mt_scores)) + 
+   geom_point(alpha = 1/2)
   
   
 ```
@@ -228,8 +229,14 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
   enem %>% 
     select(NU_NOTA_CN:NU_NOTA_MT) %>%
     mutate(nota_geral = (NU_NOTA_CN + NU_NOTA_CH + NU_NOTA_LC + NU_NOTA_MT) / 4)
+
+
+ enem %>% 
+    select(NU_NOTA_CN:NU_NOTA_MT) %>%
+    mutate(nota_geral = sum(NU_NOTA_CN,  NU_NOTA_CH, NU_NOTA_LC, NU_NOTA_MT, na.rm = T))
   
-  is.na(enem$NU_NOTA_CN) %>% sjmisc::frq()
+ library(sjmisc)
+  is.na(enem$NU_NOTA_CN) %>% frq()
  
   enem %>% 
     select(NU_NOTA_CN:NU_NOTA_MT) %>%
@@ -242,7 +249,7 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
   enem %>% 
     select(NU_NOTA_CN:NU_NOTA_MT) %>%
     mutate(
-      mean = mean(NU_NOTA_CN, NU_NOTA_MT, na.rm = TRUE)
+      mean = mean(NU_NOTA_CN, NU_NOTA_CH, NU_NOTA_LC, NU_NOTA_MT, na.rm = TRUE)
     )
   
   attributes(scale(enem$NU_NOTA_CH))
@@ -258,10 +265,12 @@ Grolemund & Wickham (2017): "filter() only includes rows where the condition is 
       zLC = scale(NU_NOTA_LC),
       zMT = scale(NU_NOTA_MT),
       z_geral = (zCN + zCH+ zLC + zMT)/4,
+      nota_geral = ((NU_NOTA_CN + NU_NOTA_CH + NU_NOTA_LC + NU_NOTA_MT) / 4),
       rank = min_rank(z_geral),
-      percentil_g =  percent_rank(z_geral)
+      percentil_g =  round(percent_rank(z_geral), 8)
       ) %>%
-    arrange(rank)
+    arrange(desc(rank)) %>%
+    ggplot(aes(y = percentil_g, x = nota_geral)) + geom_point()
 
 ```
 
@@ -279,7 +288,7 @@ slides
   
   glimpse(df)
   l <- attributes(df)
-  
+  l %>% glimpse
   l$groups %>% view
   
   enem %>% group_by(SG_UF_RESIDENCIA) %>% tally()
@@ -320,7 +329,20 @@ slides
       N = n()
     )
   
+  glimpse(enem$TP_DEPENDENCIA_ADM_ESC)
+  
+  labelled::to_factor(enem$TP_DEPENDENCIA_ADM_ESC)
+  
+  tmp <-  attributes(enem$TP_DEPENDENCIA_ADM_ESC)
+   tmp$labels
+  
+  
+  
    enem %>% 
+    mutate(
+    TP_DEPENDENCIA_ADM_ESC =  
+     factor(TP_DEPENDENCIA_ADM_ESC, labels = names(tmp$labels))
+    ) %>%
     group_by(TP_DEPENDENCIA_ADM_ESC) %>%
     summarise(
       m_mt = mean(NU_NOTA_MT, na.rm=TRUE),
@@ -340,19 +362,25 @@ slides
      )  
   
   enem %>% 
+    mutate(
+    TP_DEPENDENCIA_ADM_ESC =  
+     factor(TP_DEPENDENCIA_ADM_ESC, labels = names(tmp$labels))
+    ) %>%
     group_by(TP_DEPENDENCIA_ADM_ESC) %>%
     summarise(
       across(contains("NU_NOTA"), ~mean(.x, na.rm=TRUE))
      )  
   
-    l = list(M="mean", SD="sd", min="min", max="max")
-  enem %>% 
+  l = list(M=mean, SD=sd, min=min, max=max)
+ 
+   enem %>% 
     group_by(TP_DEPENDENCIA_ADM_ESC) %>%
     summarise(
       across(contains("NU_NOTA"), l , na.rm = TRUE)
-        ) %>% view
-  
-  
+        )
+ 
+    
+ 
   enem %>% 
     group_by(TP_DEPENDENCIA_ADM_ESC) %>%
     summarise(
@@ -400,7 +428,7 @@ enem %>% .$NU_NOTA_MT
   enem %>% 
     select( contains("NU_NOTA")) %>%
     corr.test() %>% 
-    pluck("n")
+    pluck("r")
   
   
     as.data.frame()
@@ -415,11 +443,11 @@ enem %>% .$NU_NOTA_MT
     select( contains("NU_NOTA")) %>%
     correlate %>%
     shave %>%
-    fashion %>% 
+    fashion(decimals = 3, leading_zeros = T) %>% 
     view
   
   enem %>% 
-     select( contains("NU_NOTA")) %>%
+    select( contains("NU_NOTA")) %>%
     correlate %>%
     network_plot(min_cor = .3)
    
@@ -432,10 +460,8 @@ enem %>% .$NU_NOTA_MT
   enem %>% 
      select( contains("NU_NOTA")) %>%
      cor(use = "pairwise") %>%
-     corrplot(method = "square")
+     corrplot(number.cex = .5, method = "number")
 
- 
-  
 ```
 
 -   Criar tabelas normativas
@@ -447,9 +473,12 @@ enem %>% .$NU_NOTA_MT
     select(perc_mt, mt_scores) %>%
     arrange(perc_mt) %>%
     group_by(mt_scores) %>%
-    summarise(perc_mt = round(first(perc_mt), 2))
+    summarise(perc_mt = round(first(perc_mt), 3)) %>%
+    view
 
   f <- ecdf(enem$mt_scores)
+  
+  f(10)
   plot(f)
   
   enem %>% 
@@ -526,12 +555,22 @@ enem %>% .$NU_NOTA_MT
 -   usando row-wise <https://dplyr.tidyverse.org/articles/rowwise.html>
 
 ```{r}
+
+
+ enem %>% 
+   select(NU_NOTA_CN:NU_NOTA_MT) %>%
+    rowwise %>%
+    mutate(escore_total = mean(c_across(everything()), na.rm=TRUE))
+
 enem %>%
   rowwise %>%
   mutate(across(Q001:Q050, as.integer)) %>%
-  mutate(resp_quest = c_across(Q001:Q050, ~sum(!is.na(.x)))) %>%
+  mutate(resp_quest = sum(c_across(Q001:Q050, ~(!is.na(.x))))) %>%
   relocate(resp_quest) %>% view
 
+enem$n_missing = 
+ enem %>% select(Q001:Q050) %>%
+ apply(MARGIN = 1, function(x){sum(is.na(x))})
 
 
 enem %>%
